@@ -53,7 +53,9 @@ for line in Lines:
         print("loop")
         last_total_length = total_length_2
         expanded_string = expand_string(expanded_string)
-        total_length_2 += len(expanded_string)
+        # print(expanded_string)
+
+        total_length_2 = len(expanded_string)
         print("current length: {}".format(total_length_2))
         print("count of compress instructions: {}".format(expanded_string.count("(")))
 
@@ -61,4 +63,4 @@ for line in Lines:
 
 print("TASK 1 - Total length of file: {}".format(total_length))
 
-print("TASK 2 - ")
+print("TASK 2 - Total length of file: {}".format(total_length_2))

@@ -9,7 +9,7 @@ class Item:
         return self.name
 
 
-file1 = open('puzzle11.txt', 'r')
+file1 = open('test.txt', 'r')
 Lines = file1.readlines()
 
 count = 0
@@ -21,10 +21,19 @@ def breath_search_solution(start_sequence):
 
     step_counter = 0
     found_solution = False
+
     while not found_solution:
         next_step = []
         print("step: {}, possible solutions: {}".format(step_counter, len(current_step)))
+        percent = 0
+        tested_solution = 0
+        print()
         for solution in current_step:
+            tested_solution += 1
+            new_percent =  100 * tested_solution // len(current_step)
+            if new_percent > percent:
+                percent = new_percent
+                print("\x1b[32m{} %".format(percent))
             if solution in already_visited_configurations:
                 continue
             else:

@@ -15,6 +15,43 @@ def get_count_of_viable_pairs(node_list):
                     pairs += 1
     return pairs
 
+def print_grid(node_list):
+    current_index = 0
+    for node in node_list:
+        if "x{}".format(current_index) in node.name:
+            print("{}/{}".format(node.used, node.size), end='')
+            print(", ", end='')
+        else:
+            current_index += 1
+            print()
+            print("{}/{}".format(node.used, node.size), end='')
+            print(", ", end='')
+
+def pprint_grid(node_list):
+    current_index = 0
+    for node in node_list:
+        if "x{}".format(current_index) in node.name:
+            if node.size > 200:
+                print("X".format(node.used, node.size), end='')
+                print(" ", end='')
+            elif node.used == 0:
+                print("0".format(node.used, node.size), end='')
+                print(" ", end='')
+            else:
+                print(".".format(node.used, node.size), end='')
+                print(" ", end='')
+        else:
+            current_index += 1
+            print()
+            if node.size > 200:
+                print("X".format(node.used, node.size), end='')
+                print(" ", end='')
+            elif node.used == 0:
+                print("0".format(node.used, node.size), end='')
+                print(" ", end='')
+            else:
+                print(".".format(node.used, node.size), end='')
+                print(" ", end='')
 
 file1 = open('puzzle22.txt', 'r')
 Lines = file1.readlines()
@@ -36,8 +73,9 @@ for line in Lines:
         nodes.append(Node(split_string[0], int(split_string[1]), int(split_string[2]), int(split_string[3])))
 
     count += 1
+pprint_grid(nodes)
 
-
+print()
 print("TASK 1 - viable pairs: {}".format(get_count_of_viable_pairs(nodes)))
 
-print("TASK 2 - ")
+print("TASK 2 - sol: 28 - solved it per pen and paper")

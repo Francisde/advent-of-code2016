@@ -28,7 +28,10 @@ def generate_all_configurations(elements, floors):
                 for k in range(floors):
                     for old_configuration in old_configurations:
                         current_configurations.append("{}-{}{}.{}-{}{}.{}".format(old_configuration, element, 'G', j, element, 'M', k))
-        configuarations = configuarations + current_configurations
+        for config in current_configurations:
+            if configuration_valid(parse_configuration(confs[i])[1]):
+                configuarations.append(config)
+
 
     print("{} options".format(len(configuarations)))
     return configuarations
@@ -116,10 +119,6 @@ def reachable_solution_in_one_step(start_sequence):
         for entry in possible_movements:
             next_step.append(generate_new_config(new_elevator, entry, items))
     return next_step
-
-file1 = open('test.txt', 'r')
-Lines = file1.readlines()
-
 
 count = 0
 
